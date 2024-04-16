@@ -59,17 +59,20 @@ async function correctText(textToTranslate) {
             body: JSON.stringify({
                 "contents": [{
                     "parts": [
-                        {"text": `Corrige ce texte : "${textToTranslate}"`}
+                        {"text": ` Corriger les fautes d'orthographe et améliorer la structure de la langue sans ajouter de contenu supplémentaire. Si jamais le texte ne peut être corrigé pour une raison quelconque, retourne le texte original Dans aucun cas tu ne dois ajouter d'autre information. Voici le texte pour la Corriger < : "${textToTranslate} " > `}
                     ]
                 }]
             })
         });
 
         if (!response.ok) {
-            throw new Error(` Je te soumets ce texte afin que tu puisses corriger les fautes d'orthographe et améliorer la structure de la langue sans ajouter de contenu supplémentaire. Si jamais le texte ne peut être corrigé pour une raison quelconque, retourne le texte original suivi de ... pour indiquer qu'aucune correction n'a été possible. Il est donc très important que tu me retournes soit la version corrigée, soit la même version avec ..., Dans aucun cas tu ne dois ajouter d'autre information. Voici le texte  <  ${response.statusText} > `);
+            throw new Error(` La réponse du réseau n'était pas correcte ${response.statusText} `);
         }
 
         const data = await response.json();
+        
+        console.log( data.candidates[0].content.parts[0].text );
+
         const text = data.candidates[0].content.parts[0].text.trim().replace(/"/g, '');
 
         console.log("Texte corrigé : ", text);
