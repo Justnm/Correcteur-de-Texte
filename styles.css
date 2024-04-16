@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 10px;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+#history {
+    margin-top: 20px;
+}
+
+#correctionList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#correctionList li {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #0078D7;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

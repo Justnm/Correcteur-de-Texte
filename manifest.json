@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Correcteur de Texte",
+  "version": "1.0",
+  "description": "Corrige les fautes de texte dans n'importe quel champ de texte",
+  "permissions": ["activeTab", "contextMenus","scripting", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"]
+  }]
+}
